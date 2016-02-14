@@ -18,7 +18,7 @@ resolvers ++= Seq(
   Resolver.typesafeRepo("releases")
 )
 
-organization := "ws.securesocial"
+organization := "com.eyewyre.ws.securesocial"
 
 organizationName := "SecureSocial"
 
@@ -31,11 +31,11 @@ publishArtifact in Test := false
 pomIncludeRepository := { _ => false }
 
 publishTo := {
-  val nexus = "https://oss.sonatype.org/"
+  val archiva = "http://repo.eyewyre.com:8000/repository/"
   if (version.value.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
+    Some("snapshots" at archiva + "snapshots")
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    Some("releases"  at archiva + "releases")
 }
 
 startYear := Some(2012)
